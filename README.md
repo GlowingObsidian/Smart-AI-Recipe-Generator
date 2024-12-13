@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Collaboration Guide for Smart AI Recipe Generator
 
-## Getting Started
+Welcome to the Smart AI Recipe Generator project! This guide provides instructions for collaborating effectively on this repository. Follow the steps below to ensure smooth teamwork and maintain a stable codebase.
 
-First, run the development server:
+---
+
+## **Getting Started**
+
+1. **Clone the Repository**
+   First, clone the repository to your local machine:
+
+   ```bash
+   git clone https://github.com/YourUsername/Smart-AI-Recipe-Generator.git
+   cd Smart-AI-Recipe-Generator
+   ```
+
+2. **Set Up the Environment**
+   Follow the setup instructions in the [README.md](README.md) to install dependencies and prepare your development environment.
+
+---
+
+## **Working on the Project**
+
+### **1. Create a New Branch**
+
+To keep the `main` branch stable, create a new branch for your work:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git checkout -b feature/your-feature-name
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### **Branch Naming Conventions:**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Features:** `feature/your-feature-name`
+- **Bug Fixes:** `bugfix/issue-description`
+- **Hotfixes:** `hotfix/urgent-issue`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### **2. Make Your Changes Locally**
 
-## Learn More
+Edit the code, test your changes, and ensure everything works as expected. Use descriptive commit messages for each change:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+git add .
+git commit -m "Brief description of the changes made"
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### **3. Push Your Branch**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Push your branch to the repository:
 
-## Deploy on Vercel
+```bash
+git push origin feature/your-feature-name
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## **Submitting Your Work**
+
+### **1. Create a Pull Request (PR)**
+
+Go to the GitHub repository and create a pull request:
+
+1. Select your branch and compare it with the `main` branch.
+2. Provide a clear title and description of the changes made.
+3. Assign reviewers (e.g., team members).
+
+### **2. Review Process**
+
+Your pull request will be reviewed by other team members:
+
+- They may comment on changes or suggest improvements.
+- Address any requested changes and push updates to your branch.
+
+### **3. Merge Your PR**
+
+Once approved, the pull request will be merged into the `main` branch. Use squash merging to keep the commit history clean.
+
+---
+
+## **Keeping Your Local Repository Updated**
+
+After a pull request is merged, sync your local repository:
+
+```bash
+git checkout main
+git pull origin main
+```
+
+---
+
+## **Guidelines for Contributors**
+
+1. **Code Style:**
+   Follow the coding style defined in the project. Use tools like Prettier or ESLint for consistent formatting.
+
+2. **Commit Messages:**
+   Write clear and descriptive commit messages. Use the present tense, e.g., "Add new feature" instead of "Added new feature."
+
+3. **Communication:**
+   After making a new PR. Please inform in the WhatsApp group to get it reviewed and merged.
+
+4. **Testing:**
+   Test your changes thoroughly before submitting a pull request.
+
+---
+
+Happy coding and thank you for contributing to Smart AI Recipe Generator!
