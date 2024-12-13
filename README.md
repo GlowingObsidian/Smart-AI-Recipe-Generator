@@ -10,7 +10,7 @@ Welcome to the Smart AI Recipe Generator project! This guide provides instructio
    First, clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/YourUsername/Smart-AI-Recipe-Generator.git
+   git clone https://github.com/GlowingObsidian/Smart-AI-Recipe-Generator
    cd Smart-AI-Recipe-Generator
    ```
 
