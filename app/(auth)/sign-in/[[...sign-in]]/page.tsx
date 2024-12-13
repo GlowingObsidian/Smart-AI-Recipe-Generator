@@ -15,7 +15,7 @@ export default function Page() {
           </p>
         </div>
         <div className="flex justify-center mt-5">
-          <SignIn />
+          <SignIn forceRedirectUrl="/create" />
         </div>
       </div>
 
