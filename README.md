@@ -21,21 +21,30 @@ Welcome to the Smart AI Recipe Generator project! This guide provides instructio
 
 ## **Working on the Project**
 
-### **1. Create a New Branch**
+### **1. Pull the main branch first**
+
+To stay aligned with any updates in `main` branch always first,
+
+```bash
+git fetch --all
+git pull
+```
+
+### **2. Create a New Branch**
 
 To keep the `main` branch stable, create a new branch for your work:
 
 ```bash
-git checkout -b feature/your-feature-name
+git checkout -b name/your-feature-name
 ```
 
 #### **Branch Naming Conventions:**
 
-- **Features:** `feature/your-feature-name`
-- **Bug Fixes:** `bugfix/issue-description`
-- **Hotfixes:** `hotfix/urgent-issue`
+- **Features:** `name/your-feature-name`
+- **Bug Fixes:** `name/issue-description`
+- **Hotfixes:** `name/urgent-issue`
 
-### **2. Make Your Changes Locally**
+### **3. Make Your Changes Locally**
 
 Edit the code, test your changes, and ensure everything works as expected. Use descriptive commit messages for each change:
 
@@ -44,7 +53,7 @@ git add .
 git commit -m "Brief description of the changes made"
 ```
 
-### **3. Push Your Branch**
+### **4. Push Your Branch**
 
 Push your branch to the repository:
 

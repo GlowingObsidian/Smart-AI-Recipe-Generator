@@ -15,7 +15,7 @@ export interface Recipe {
 
 const RecipeCard = ({ recipe }: { recipe: Recipe }) => {
   return (
-    <Card className="p-5 bg-primary-100 dark:bg-zinc-900 border-primary-300 dark:border-primary-800">
+    <Card className="p-5 max-w-fit bg-primary-100 dark:bg-zinc-900 border-primary-300 dark:border-primary-800">
       <CardTitle className="text-lg">{recipe.name}</CardTitle>
       <CardDescription>{recipe.description}</CardDescription>
       <CardContent className="p-0">
@@ -32,15 +32,17 @@ const RecipeCard = ({ recipe }: { recipe: Recipe }) => {
           ))}
         </div>
         {/*Instructions*/}
-        <p className="mt-5 font-semibold text-primary-800">Instructions:</p>
-        {recipe.instructions.map((instruction, index) => (
-          <div key={index} className="flex items-center my-2 gap-2 text-sm">
-            <p className="border border-primary-800 rounded-full py-1 px-2">
-              {index + 1}
-            </p>
-            <p>{instruction}</p>
-          </div>
-        ))}
+        <p className="my-5 font-semibold text-primary-800">Instructions:</p>
+        <ul className="space-y-2">
+          {recipe.instructions.map((instruction, index) => (
+            <li key={index} className="flex items-center">
+              <span className="flex-shrink-0 inline-flex items-center justify-center w-5 h-5 border-primary-800 border text-sm rounded-full mr-3">
+                {index + 1}
+              </span>
+              <span>{instruction}</span>
+            </li>
+          ))}
+        </ul>
       </CardContent>
     </Card>
   );
