@@ -1,6 +1,7 @@
 import React from "react";
 import UserInputArea from "./_components/UserInputArea";
 import RecipeCard from "./_components/RecipeCard";
+import RecipeCarousel from "./_components/RecipeCarousel";
 
 const CreatePage = () => {
   const recipes = [
@@ -80,11 +81,12 @@ const CreatePage = () => {
   return (
     <div className="mb-10">
       <UserInputArea />
-      <div className="grid grid-cols-1 md:grid-cols-3 items-start gap-5 mt-10 mx-5 lg:mx-48">
+      <div className="hidden lg:grid grid-cols-3 items-start gap-5 mt-10 mx-5 lg:mx-48">
         {recipes.map((recipe) => (
           <RecipeCard recipe={recipe} key={recipe.name} />
         ))}
       </div>
+      <RecipeCarousel recipes={recipes} />
     </div>
   );
 };
