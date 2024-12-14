@@ -43,7 +43,7 @@ const items = [
 
 export function AppSidebar() {
   return (
-    <Sidebar className="w-64 h-full bg-gradient-to-b from-primary-50 to-primary-200">
+    <Sidebar className="w-64 h-full bg-gradient-to-b from-primary-50 to-primary-200 dark:bg-gradient-to-b dark:from-zinc-800 dark:to-zinc-950">
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="font-semibold">
@@ -53,7 +53,10 @@ export function AppSidebar() {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.id}>
-                  <SidebarMenuButton asChild className="hover:bg-primary-300">
+                  <SidebarMenuButton
+                    asChild
+                    className="hover:bg-primary-300 dark:hover:bg-gray-700"
+                  >
                     <Link href={item.url}>
                       <span>{item.title}</span>
                     </Link>
@@ -65,7 +68,7 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <div className="flex items-center gap-2 p-3 rounded-lg cursor-pointer hover:bg-gray-200">
+        <div className="flex items-center gap-2 p-3 rounded-lg cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700">
           <Bolt /> <p className="font-semibold">Upgrade plan</p>
         </div>
       </SidebarFooter>
