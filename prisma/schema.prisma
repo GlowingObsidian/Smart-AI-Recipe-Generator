@@ -12,3 +12,21 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Prompt {
+  id            String    @id @default(cuid())
+  userID        String
+  title         String
+  prompt        String
+  updatedPrompt String?
+  created       DateTime  @default(now())
+  updated       DateTime?
+  recipes       Recipe[]
+}
+
+model Recipe {
+  id         String @id @default(cuid())
+  recipeJSON String
+  prompt     Prompt @relation(fields: [promptID], references: [id], onDelete: Cascade)
+  promptID   String
+}
