@@ -1,7 +1,7 @@
 import React from "react";
-import MainHeader from "./_components/header";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "./_components/AppSidebar";
+import MainHeader from "./_components/header";
 
 export default function CreateLayout({
   children,
