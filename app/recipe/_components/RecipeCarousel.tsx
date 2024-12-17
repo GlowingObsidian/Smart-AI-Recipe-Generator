@@ -6,8 +6,9 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import RecipeCard, { Recipe } from "./RecipeCard";
+import RecipeCard from "./RecipeCard";
 import { useState, useEffect } from "react";
+import { Recipe } from "@prisma/client";
 
 function RecipeCarousel({ recipes }: { recipes: Recipe[] }) {
   const [api, setApi] = useState<CarouselApi>();
