@@ -1,4 +1,5 @@
-import { model } from "@/app/services/gemini-client";
+import { gemini } from "@/app/services/gemini-client";
+import { instruction } from "@/app/services/gemini-instruction";
 import prisma from "@/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -17,20 +18,19 @@ export async function POST(request: NextRequest) {
   if (!body || !body.prompt)
     return NextResponse.json(
       { error: "Prompt missing in body" },
-      { status: 404 }
+      { status: 400 }
     );
 
-  console.log(body.prompt);
+  console.log(body);
 
+  const model = gemini(instruction);
   const output = await model.generateContent(body.prompt);
 
   try {
     const generation = JSON.parse(output.response.text());
 
-    console.log(generation);
-
     if (generation.error != null)
-      return NextResponse.json({ error: generation.error }, { status: 404 });
+      return NextResponse.json({ error: generation.error }, { status: 406 });
 
     const newPrompt = await prisma.prompt.create({
       data: {
@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
         })
     );
 
-    return NextResponse.json({ newPrompt }, { status: 200 });
+    return NextResponse.json({ ...newPrompt }, { status: 201 });
   } catch (e) {
     return NextResponse.json({ e }, { status: 500 });
   }

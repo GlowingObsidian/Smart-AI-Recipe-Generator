@@ -1,7 +1,26 @@
-import { NextResponse } from "next/server";
+import prisma from "@/prisma/client";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET() {
-  //get the user ID from Clerk then search in DB to get all prompt IDs of the User
+export async function POST(request: NextRequest) {
+  const body = await request.json();
 
-  return NextResponse.json({ prompts: [23, 11, 13, 17, 31] }, { status: 200 });
+  if (!body || !body.userID)
+    return NextResponse.json(
+      { error: "Malformed request body." },
+      { status: 401 }
+    );
+
+  const allPrompts = await prisma.prompt.findMany({
+    where: {
+      userID: body.userID,
+    },
+    select: {
+      id: true,
+      title: true,
+      created: true,
+      updated: true,
+    },
+  });
+
+  return NextResponse.json({ allPrompts }, { status: 200 });
 }
