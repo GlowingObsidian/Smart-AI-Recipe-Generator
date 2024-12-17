@@ -15,7 +15,7 @@ const GenerateRecipesButton = ({ prompt }: { prompt: string }) => {
     });
 
     console.log(result.data);
-    const promptID = result.data.newPrompt.id;
+    const promptID = result.data.id;
     router.push(`/recipe/${promptID}`);
   };
   return <Button onClick={handleOnClick}>Generate</Button>;

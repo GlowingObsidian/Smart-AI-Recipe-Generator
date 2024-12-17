@@ -3,8 +3,9 @@
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import GenerateRecipesButton from "./GenerateRecipesButton";
+import UpdateRecipesButton from "./UpdateRecipesButton";
 
-const UserInputArea = () => {
+const UserInputArea = ({ canUpdate = false }: { canUpdate?: boolean }) => {
   const [userInput, setUserInput] = useState("");
 
   return (
@@ -13,7 +14,11 @@ const UserInputArea = () => {
         placeholder="Enter your instructions here..."
         onChange={(e) => setUserInput(e.target.value)}
       />
-      <GenerateRecipesButton prompt={userInput} />
+      {canUpdate ? (
+        <UpdateRecipesButton />
+      ) : (
+        <GenerateRecipesButton prompt={userInput} />
+      )}
     </div>
   );
 };
