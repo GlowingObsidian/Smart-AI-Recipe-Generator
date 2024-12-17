@@ -5,9 +5,10 @@ import RecipeCard from "../_components/RecipeCard";
 import RecipeCarousel from "../_components/RecipeCarousel";
 
 const RecipesPage = async ({ params }: { params: { id: string } }) => {
+  const { id } = await params;
   const recipes = await prisma.recipe.findMany({
     where: {
-      promptID: params.id,
+      promptID: id,
     },
   });
   return (

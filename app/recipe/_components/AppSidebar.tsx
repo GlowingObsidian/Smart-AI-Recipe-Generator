@@ -12,36 +12,13 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
+import { Prompt } from "@prisma/client";
 
-const items = [
-  {
-    id: "1",
-    title: "Vegan Pasta with Seasonal Vegetables",
-    url: "#",
-  },
-  {
-    id: 2,
-    title: "Gluten-Free Breakfast Ideas",
-    url: "#",
-  },
-  {
-    id: 3,
-    title: "Quick Chicken Dinner for Two",
-    url: "#",
-  },
-  {
-    id: 4,
-    title: "Low-Carb Snacks with Avocado",
-    url: "#",
-  },
-  {
-    id: 5,
-    title: "Dairy-Free Desserts to Savor",
-    url: "#",
-  },
-];
+interface Props {
+  prompts: Prompt[];
+}
 
-export function AppSidebar() {
+export default async function AppSidebar({ prompts }: Props) {
   return (
     <Sidebar className="w-64 h-full bg-gradient-to-b from-primary-50 to-primary-200 dark:bg-gradient-to-b dark:from-zinc-800 dark:to-zinc-950">
       <SidebarContent>
@@ -51,14 +28,14 @@ export function AppSidebar() {
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.id}>
+              {prompts.map((prompt) => (
+                <SidebarMenuItem key={prompt.id}>
                   <SidebarMenuButton
                     asChild
                     className="hover:bg-primary-300 dark:hover:bg-gray-700"
                   >
-                    <Link href={item.url}>
-                      <span>{item.title}</span>
+                    <Link href={`/recipe/${prompt.id}`}>
+                      <span>{prompt.title}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
