@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
         })
     );
 
-    return NextResponse.json({ generation }, { status: 200 });
+    return NextResponse.json({ newPrompt }, { status: 200 });
   } catch (e) {
     return NextResponse.json({ e }, { status: 500 });
   }
