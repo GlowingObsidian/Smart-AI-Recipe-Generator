@@ -44,6 +44,15 @@ export async function PATCH(
 
       console.log(updatedRecipes);
 
+      await prisma.prompt.update({
+        where: {
+          id: id,
+        },
+        data: {
+          updatedPrompt: body.update,
+        },
+      });
+
       await prisma.recipe.deleteMany({
         where: {
           promptID: id,

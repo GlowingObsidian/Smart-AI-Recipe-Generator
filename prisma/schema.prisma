@@ -20,7 +20,7 @@ model Prompt {
   prompt        String
   updatedPrompt String?
   created       DateTime  @default(now())
-  updated       DateTime?
+  updated       DateTime? @updatedAt
   recipes       Recipe[]
 }
 
