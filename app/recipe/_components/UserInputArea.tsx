@@ -15,7 +15,7 @@ const UserInputArea = ({ canUpdate = false }: { canUpdate?: boolean }) => {
         onChange={(e) => setUserInput(e.target.value)}
       />
       {canUpdate ? (
-        <UpdateRecipesButton />
+        <UpdateRecipesButton prompt={userInput} />
       ) : (
         <GenerateRecipesButton prompt={userInput} />
       )}
