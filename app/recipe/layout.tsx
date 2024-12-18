@@ -5,6 +5,7 @@ import { auth } from "@clerk/nextjs/server";
 import prisma from "@/prisma/client";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export default async function CreateLayout({
   children,
@@ -19,6 +20,14 @@ export default async function CreateLayout({
     where: {
       userID: userId,
     },
+    orderBy: [
+      {
+        updated: "desc",
+      },
+      {
+        created: "desc",
+      },
+    ],
   });
   return (
     <SidebarProvider>
