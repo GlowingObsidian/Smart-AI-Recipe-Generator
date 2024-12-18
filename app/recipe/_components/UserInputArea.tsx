@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import GenerateRecipesButton from "./GenerateRecipesButton";
 import UpdateRecipesButton from "./UpdateRecipesButton";
+import DeleteButton from "./DeleteButton";
 
 const UserInputArea = ({ canUpdate = false }: { canUpdate?: boolean }) => {
   const [userInput, setUserInput] = useState("");
@@ -15,7 +16,10 @@ const UserInputArea = ({ canUpdate = false }: { canUpdate?: boolean }) => {
         onChange={(e) => setUserInput(e.target.value)}
       />
       {canUpdate ? (
-        <UpdateRecipesButton prompt={userInput} />
+        <div className="flex items-center gap-2 justify-between">
+          <UpdateRecipesButton prompt={userInput} />
+          <DeleteButton />
+        </div>
       ) : (
         <GenerateRecipesButton prompt={userInput} />
       )}
