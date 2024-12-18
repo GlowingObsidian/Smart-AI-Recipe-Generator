@@ -1,4 +1,4 @@
-import { Bolt } from "lucide-react";
+import { Bolt, HandPlatter } from "lucide-react";
 
 import {
   Sidebar,
@@ -23,6 +23,16 @@ export default async function AppSidebar({ prompts }: Props) {
     <Sidebar className="w-64 h-full bg-gradient-to-b from-primary-50 to-primary-200 dark:bg-gradient-to-b dark:from-zinc-800 dark:to-zinc-950">
       <SidebarContent>
         <SidebarGroup>
+          <SidebarGroupContent>
+            <Link
+              href="/recipe/create"
+              className="flex items-center justify-between mt-2 p-2 px-4 hover:bg-primary-200 dark:hover:bg-gray-700 rounded-md font-semibold"
+            >
+              New Recipe <HandPlatter size={20} strokeWidth={1} />
+            </Link>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        <SidebarGroup>
           <SidebarGroupLabel className="font-semibold">
             Your generations
           </SidebarGroupLabel>
@@ -45,7 +55,7 @@ export default async function AppSidebar({ prompts }: Props) {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <div className="flex items-center gap-2 p-3 rounded-lg cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700">
+        <div className="flex items-center gap-2 p-3 rounded-lg cursor-pointer hover:bg-primary-200 dark:hover:bg-gray-700">
           <Bolt /> <p className="font-semibold">Upgrade plan</p>
         </div>
       </SidebarFooter>
