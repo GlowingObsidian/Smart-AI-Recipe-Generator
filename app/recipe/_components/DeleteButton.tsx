@@ -19,9 +19,10 @@ const DeleteButton = () => {
   const params = useParams();
   const handleOnDelete = async () => {
     try {
-      const result = await axios.delete(`/recipe/${params.id}`);
+      const result = await axios.delete(`/api/recipe/${params.id}`);
       console.log(result.data);
       router.push("/recipe/create");
+      router.refresh();
     } catch (error) {
       console.error("Error deleting recipes:", error);
     }
