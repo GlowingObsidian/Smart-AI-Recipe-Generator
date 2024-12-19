@@ -9,20 +9,20 @@ const Header = () => {
     <header>
       <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-          <Link href="https://flowbite.com" className="flex items-center">
+          <div className="flex items-center">
             <Image
-              src="https://flowbite.com/docs/images/logo.svg"
-              className="mr-3 h-6 sm:h-9 w-full"
+              src="/icon.png"
+              className="mr-3 h-12 w-full"
               alt="Flowbite Logo"
               width={1000}
               height={800}
             />
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-              Flowbite
+              PlatterBot
             </span>
-          </Link>
+          </div>
           <div className="flex items-center lg:order-2">
-            {user ? (
+            {user.isSignedIn ? (
               <Link
                 href="/recipe/create"
                 className="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
@@ -39,7 +39,7 @@ const Header = () => {
             )}
             <Link
               href="/sign-up"
-              className="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+              className="text-gray-800 dark:text-white bg-primary-300 hover:bg-primary-400 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
             >
               Get started
             </Link>

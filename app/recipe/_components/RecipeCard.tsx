@@ -5,7 +5,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Recipe } from "@prisma/client";
-import { CookingPot } from "lucide-react";
+import { CookingPot, Egg } from "lucide-react";
 
 const RecipeCard = ({ recipe }: { recipe: Recipe }) => {
   const parsedRecipe = JSON.parse(recipe.recipeJSON);
@@ -42,6 +42,22 @@ const RecipeCard = ({ recipe }: { recipe: Recipe }) => {
             )
           )}
         </ul>
+        {/*Nutritional Info*/}
+        <p className="mt-5 font-semibold text-primary-800">
+          Nutritional Information:
+        </p>
+        <div className="p-3 mt-3 bg-primary-200 dark:bg-zinc-950 rounded-lg">
+          {Object.entries(parsedRecipe.nutritional_info).map(
+            ([nutrient, amount]) => (
+              <div className="flex items-center gap-2 my-1" key={nutrient}>
+                <Egg size={16} strokeWidth={0.5} />
+                <p>
+                  <strong>{nutrient}</strong>: {String(amount) || "N/A"}
+                </p>
+              </div>
+            )
+          )}
+        </div>
       </CardContent>
     </Card>
   );
