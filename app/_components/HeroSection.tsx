@@ -17,7 +17,7 @@ const HeroSection = () => {
           <div className="flex flex-wrap gap-4 mt-6">
             <Link
               href="/create"
-              className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+              className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-800 dark:text-white bg-primary-400 rounded-lg hover:bg-primary-500 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
             >
               Get Started
             </Link>

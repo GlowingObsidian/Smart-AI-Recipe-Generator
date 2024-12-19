@@ -7,6 +7,9 @@ import { ClerkProvider } from "@clerk/nextjs";
 export const metadata: Metadata = {
   title: "Smart AI Recipe Generator",
   description: "Generate unique recipes with AI.",
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 const inter = Inter({ subsets: ["latin"] });
