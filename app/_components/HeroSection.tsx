@@ -29,7 +29,7 @@ const HeroSection = () => {
             </a>
           </div>
         </div>
-        <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
+        <div className="mt-10 lg:mt-0 lg:col-span-5 lg:flex">
           <Image
             src="/hero_image.jpg" // Replace with your image path
             alt="AI Recipe Generator Illustration"
