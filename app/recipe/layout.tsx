@@ -24,9 +24,6 @@ export default async function CreateLayout({
       {
         updated: "desc",
       },
-      {
-        created: "desc",
-      },
     ],
   });
   return (
