@@ -1,6 +1,7 @@
 import { ModeToggle } from "@/app/_components/ToggleThemeButton";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { UserButton } from "@clerk/nextjs";
+import Image from "next/image";
 import Link from "next/link";
 
 const MainHeader = () => {
@@ -9,7 +10,13 @@ const MainHeader = () => {
       <div className="flex items-center gap-3">
         <SidebarTrigger />
         <Link href="/">
-          <h2 className="text-lg font-semibold">PlatterBot</h2>
+          <Image
+            src={"/PlatterBot.png"}
+            alt="logo"
+            height={800}
+            width={1000}
+            className="w-[140px] h-[30px]"
+          />
         </Link>
       </div>
       <div className="flex items-center gap-3">
