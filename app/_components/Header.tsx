@@ -11,17 +11,14 @@ const Header = () => {
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <div className="flex items-center">
             <Image
-              src="/icon.png"
-              className="mr-3 h-12 w-full"
-              alt="Flowbite Logo"
-              width={1000}
+              src={"/PlatterBot.png"}
+              alt="logo"
               height={800}
+              width={1000}
+              className="w-[210px] h-[45px]"
             />
-            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-              PlatterBot
-            </span>
           </div>
-          <div className="flex items-center justify-between lg:order-2 mt-3 w-full md:w-auto">
+          <div className="flex items-center justify-between lg:order-2 mt-1 w-full md:w-auto">
             {user.isSignedIn ? (
               <Link
                 href="/recipe/create"
@@ -32,7 +29,7 @@ const Header = () => {
             ) : (
               <Link
                 href="/sign-in"
-                className="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
+                className="text-gray-800 dark:text-white hover:bg-gray-50 font-medium border-2 border-primary-200 rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
               >
                 Login
               </Link>

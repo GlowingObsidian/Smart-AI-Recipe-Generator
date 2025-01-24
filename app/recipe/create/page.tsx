@@ -14,7 +14,7 @@ const CreatePage = () => {
           className="w-[300px] md:w-[500px] h-[300px] md:h-[500px]"
         />
       </div>
-      <div className="text-center text-md font-semibold text-gray-700 md:text-lg">
+      <div className="text-center text-md font-semibold text-gray-700 md:text-lg mx-5">
         Get creative! Start generating what you crave, like this hotpot for a
         start.
       </div>
