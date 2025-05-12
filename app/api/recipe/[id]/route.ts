@@ -59,14 +59,15 @@ export async function PATCH(
         },
       });
 
-      updatedRecipes.recipes.map(
-        async (recipe: unknown) =>
-          await prisma.recipe.create({
+      await Promise.all(
+        updatedRecipes.recipes.map((recipe: unknown) =>
+          prisma.recipe.create({
             data: {
               recipeJSON: JSON.stringify(recipe),
               promptID: id,
             },
           })
+        )
       );
 
       return NextResponse.json({ ...updatedRecipes }, { status: 200 });
