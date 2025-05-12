@@ -1,64 +1,19 @@
-"use client";
+import RecipeCarousel from "./RecipeCarousel";
 
-import {
-  Carousel,
-  CarouselApi,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
-import RecipeCard from "./RecipeCard";
-import { useState, useEffect } from "react";
-import { Recipe } from "@prisma/client";
-
-function RecipeCarousel({
-  recipes,
-  loading,
-}: {
-  recipes: Recipe[];
-  loading?: boolean;
-}) {
-  const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!api) {
-      return;
-    }
-
-    setCount(api.scrollSnapList().length);
-    setCurrent(api.selectedScrollSnap() + 1);
-
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1);
-    });
-  }, [api]);
-
+const RSkeleton = () => {
   return (
-    <div className="mt-10 space-y-2 visible lg:hidden">
-      <p className="text-center font-bold">
-        Recipe {current} of {count}
-      </p>
-      <Carousel setApi={setApi} className="w-full max-w-xs mx-auto md:max-w-md">
-        <CarouselContent>
-          {loading
-            ? [0, 1, 2].map((_, index) => (
-                <CarouselItem key={index}>
-                  <RecipeCardSkeleton />
-                </CarouselItem>
-              ))
-            : recipes.map((recipe, index) => (
-                <CarouselItem key={index}>
-                  <RecipeCard recipe={recipe} />
-                </CarouselItem>
-              ))}
-        </CarouselContent>
-      </Carousel>
-    </div>
+    <>
+      <div className="hidden lg:grid grid-cols-3 items-start gap-5 mt-5 mx-5 lg:mx-36">
+        {[0, 1, 2].map((_, index) => (
+          <RecipeCardSkeleton key={index} />
+        ))}
+      </div>
+      <RecipeCarousel loading recipes={[]} />
+    </>
   );
-}
+};
 
-export default RecipeCarousel;
+export default RSkeleton;
 
 import {
   Card,
