@@ -1,23 +1,51 @@
+"use client";
+
 import Image from "next/image";
-import UserInputArea from "../_components/UserInputArea";
+import { useState } from "react";
+import RSkeleton from "../_components/Skeleton";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Trash2 } from "lucide-react";
+import Prompt from "../_components/Prompt";
 
 const CreatePage = () => {
+  const [loading, setLoading] = useState(false);
+
   return (
-    <div className="mb-10">
-      <UserInputArea />
-      <div className="w-full mt-10 flex justify-center">
-        <Image
-          src="/create_image.png"
-          alt="hotpot image"
-          width={1000}
-          height={800}
-          className="w-[300px] md:w-[500px] h-[300px] md:h-[500px]"
-        />
-      </div>
-      <div className="text-center text-md font-semibold text-gray-700 md:text-lg mx-5">
-        Get creative! Start generating what you crave, like this hotpot for a
-        start.
-      </div>
+    <div>
+      {loading ? (
+        <div className="px-6 py-1">
+          <div className="flex gap-x-2">
+            <Input placeholder="Enter your instructions here..." disabled />
+            <Button disabled>Update</Button>
+            <Button disabled className="bg-red-500 text-white">
+              <Trash2 />
+            </Button>
+          </div>
+          <h2 className="mx-5 lg:mx-36 mt-10 text-xl md:text-2xl font-bold text-primary-800">
+            <Skeleton className="h-4 w-64" />
+          </h2>
+          <RSkeleton />
+        </div>
+      ) : (
+        <>
+          <Prompt onLoading={(loadingState) => setLoading(loadingState)} />
+          <div className="w-full mt-10 flex justify-center">
+            <Image
+              src="/create_image.png"
+              alt="hotpot image"
+              width={1000}
+              height={800}
+              className="w-[300px] md:w-[500px] h-[300px] md:h-[500px]"
+            />
+          </div>
+          <div className="text-center text-md font-semibold text-gray-700 md:text-lg mx-5">
+            Get creative! Start generating what you crave, like this hotpot for
+            a start.
+          </div>
+        </>
+      )}
     </div>
   );
 };

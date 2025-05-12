@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Card,
   CardContent,
@@ -5,13 +7,16 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Recipe } from "@prisma/client";
-import { CookingPot, Egg } from "lucide-react";
+import { Check, CookingPot, Copy, Egg, Share } from "lucide-react";
 
 const RecipeCard = ({ recipe }: { recipe: Recipe }) => {
   const parsedRecipe = JSON.parse(recipe.recipeJSON);
   return (
     <Card className="p-5 max-w-fit bg-primary-100 dark:bg-zinc-900 border-primary-300 dark:border-primary-800">
-      <CardTitle className="text-lg">{parsedRecipe.title}</CardTitle>
+      <CardTitle className="text-lg flex justify-between">
+        {parsedRecipe.title}
+        <ShareDialog id={recipe.id} />
+      </CardTitle>
       <CardDescription>{parsedRecipe.description}</CardDescription>
       <CardContent className="p-0">
         {/*Ingredients*/}
@@ -28,6 +33,7 @@ const RecipeCard = ({ recipe }: { recipe: Recipe }) => {
             )
           )}
         </div>
+
         {/*Instructions*/}
         <p className="my-5 font-semibold text-primary-800">Instructions:</p>
         <ul className="space-y-2">
@@ -42,6 +48,7 @@ const RecipeCard = ({ recipe }: { recipe: Recipe }) => {
             )
           )}
         </ul>
+
         {/*Nutritional Info*/}
         <p className="mt-5 font-semibold text-primary-800">
           Nutritional Information:
@@ -64,3 +71,67 @@ const RecipeCard = ({ recipe }: { recipe: Recipe }) => {
 };
 
 export default RecipeCard;
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+
+const ShareDialog = ({ id }: { id: string }) => {
+  const [copied, setCopied] = useState(false);
+  const [link, setLink] = useState("");
+
+  useEffect(() => setLink(window.location.origin + `/shared/${id}`), []);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(link);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy link:", err);
+    }
+  };
+
+  return (
+    <Dialog>
+      <DialogTrigger>
+        <Share className="size-5" />
+      </DialogTrigger>
+      <DialogContent className="max-w-md">
+        <DialogHeader>
+          <DialogTitle>Share Recipe</DialogTitle>
+          <DialogDescription>
+            Copy the recipe link to share with everyone!
+          </DialogDescription>
+          <div className="flex items-center gap-3 mt-4 bg-muted p-3 rounded-lg border text-sm">
+            <Input
+              value={link}
+              readOnly
+              className="break-all text-muted-foreground"
+            />
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleCopy}
+              className="shrink-0"
+            >
+              {copied ? (
+                <Check className="w-4 h-4 text-green-500" />
+              ) : (
+                <Copy className="w-4 h-4" />
+              )}
+            </Button>
+          </div>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
+  );
+};
