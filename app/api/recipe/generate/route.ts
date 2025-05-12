@@ -40,14 +40,15 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    generation.recipes.map(
-      async (recipe: unknown) =>
-        await prisma.recipe.create({
+    await Promise.all(
+      generation.recipes.map((recipe: unknown) =>
+        prisma.recipe.create({
           data: {
             recipeJSON: JSON.stringify(recipe),
             promptID: newPrompt.id,
           },
         })
+      )
     );
 
     return NextResponse.json({ ...newPrompt }, { status: 201 });
