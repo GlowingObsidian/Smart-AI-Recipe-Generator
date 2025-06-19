@@ -1,6 +1,5 @@
 "use client";
 
-import Error from "@/app/_components/Error";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useUser } from "@clerk/nextjs";
@@ -12,15 +11,16 @@ import DeleteButton from "./DeleteButton";
 
 const Prompt = ({
   onLoading,
+  onError,
   update,
 }: {
   onLoading: (state: boolean) => void;
+  onError: (error: number) => void;
   update?: boolean;
 }) => {
   const router = useRouter();
   const params = useParams();
   const { user } = useUser();
-  const [error, setError] = useState<string | null>(null);
   const [input, setInput] = useState("");
   const [preference, setPreference] = useState("");
 
@@ -37,12 +37,12 @@ const Prompt = ({
         prompt: input + (preference !== "" ? ` Note:${preference}` : ""),
       })
       .then((result) => {
-        console.log(result.data);
         const promptID = result.data.id;
         router.push(`/recipe/${promptID}`);
         router.refresh();
       })
-      .catch((error) => setError(error.response.data.error));
+      .catch((e) => onError(e.response.status))
+      .finally(() => onLoading(false));
   };
 
   const onUpdate = () => {
@@ -52,7 +52,7 @@ const Prompt = ({
         update: input + (preference !== "" ? ` Note:${preference}` : ""),
       })
       .then(() => router.refresh())
-      .catch((error) => setError(error.response.data.error))
+      .catch((e) => onError(e.response.status))
       .finally(() => onLoading(false));
   };
 
@@ -74,7 +74,6 @@ const Prompt = ({
           Create
         </Button>
       )}
-      {error && <Error error={error} />}
     </div>
   );
 };

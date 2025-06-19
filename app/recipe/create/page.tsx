@@ -8,9 +8,11 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
 import Prompt from "../_components/Prompt";
+import Error from "@/app/_components/Error";
 
 const CreatePage = () => {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<number | null>(null);
 
   return (
     <div>
@@ -30,7 +32,10 @@ const CreatePage = () => {
         </div>
       ) : (
         <>
-          <Prompt onLoading={(loadingState) => setLoading(loadingState)} />
+          <Prompt
+            onLoading={(loadingState) => setLoading(loadingState)}
+            onError={(error) => setError(error)}
+          />
           <div className="w-full mt-10 flex justify-center">
             <Image
               src="/create_image.png"
@@ -46,6 +51,7 @@ const CreatePage = () => {
           </div>
         </>
       )}
+      {error && <Error error={error} />}
     </div>
   );
 };
