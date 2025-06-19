@@ -15,7 +15,7 @@ const Prompt = ({
   update,
 }: {
   onLoading: (state: boolean) => void;
-  onError: (error: number) => void;
+  onError?: (error: number) => void;
   update?: boolean;
 }) => {
   const router = useRouter();
@@ -41,7 +41,7 @@ const Prompt = ({
         router.push(`/recipe/${promptID}`);
         router.refresh();
       })
-      .catch((e) => onError(e.response.status))
+      .catch((e) => onError && onError(e.response.status))
       .finally(() => onLoading(false));
   };
 
@@ -52,7 +52,7 @@ const Prompt = ({
         update: input + (preference !== "" ? ` Note:${preference}` : ""),
       })
       .then(() => router.refresh())
-      .catch((e) => onError(e.response.status))
+      .catch((e) => onError && onError(e.response.status))
       .finally(() => onLoading(false));
   };
 
