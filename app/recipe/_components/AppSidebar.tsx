@@ -95,7 +95,10 @@ const PreferenceDialog = () => {
   }, []);
 
   const onSave = () => localStorage.setItem(STORAGE_KEY, preference);
-  const onDelete = () => localStorage.removeItem(STORAGE_KEY);
+  const onDelete = () => {
+    localStorage.removeItem(STORAGE_KEY);
+    setPreference("");
+  };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -128,7 +131,11 @@ const PreferenceDialog = () => {
             </Button>
           </DialogClose>
           <DialogClose asChild>
-            <Button className="bg-red-500 text-white" onClick={onDelete}>
+            <Button
+              className="bg-red-500 text-white"
+              onClick={onDelete}
+              disabled={preference === ""}
+            >
               <Trash2 />
             </Button>
           </DialogClose>
