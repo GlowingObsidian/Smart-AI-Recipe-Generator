@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
-  title: "Smart AI Recipe Generator",
+  title: "Platterbot",
   description: "Generate unique recipes with AI.",
   icons: {
     icon: "/icon.png",
